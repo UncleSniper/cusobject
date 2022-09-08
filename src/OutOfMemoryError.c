@@ -35,7 +35,7 @@ void OutOfMemoryError_printMessage8To(
 	Error** exception,
 	String8Appendable *sink
 ) {
-	sink->vtable->appendString8(sink, exception, "Out of memory");
+	sink->vtable->appendString(sink, exception, "Out of memory");
 }
 
 Error *cusobj_default_out_of_memory_error_factory(void) {

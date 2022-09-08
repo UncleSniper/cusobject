@@ -5,7 +5,7 @@
 
 struct String8Appendable;
 
-typedef void (*String8Appendable_appendString8)(
+typedef void (*String8Appendable_appendString)(
 	struct String8Appendable *appendable,
 	Error **exception,
 	const char *string
@@ -14,7 +14,7 @@ typedef void (*String8Appendable_appendString8)(
 typedef struct String8AppendableVTable {
 	ObjectVTable Object;
 	ptrdiff_t Object_displace;
-	String8Appendable_appendString8 appendString8;
+	String8Appendable_appendString appendString;
 } String8AppendableVTable;
 
 typedef struct String8AppendableFacet {
