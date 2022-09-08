@@ -9,7 +9,7 @@ SRC=$(wildcard src/*.c)
 HDR=$(wildcard src/*.h)
 OBJ=$(subst src/,bin/,$(SRC:.c=.o))
 
-CFLAGS=-c -DBULIDING_CUSOBJECT_API -Wall -Wextra -Wno-long-long
+CFLAGS=-c -DBULIDING_CUSOBJECT_API -Wall -Wextra -Wno-long-long -fPIC -DPIC
 LDFLAGS=-shared -Wl,-soname,$(SO)
 
 .SILENT:
