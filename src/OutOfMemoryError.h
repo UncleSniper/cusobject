@@ -12,11 +12,12 @@ typedef struct OutOfMemoryErrorVTable {
 } OutOfMemoryErrorVTable;
 
 typedef struct OutOfMemoryErrorFacet {
-	ErrorFacet Error;
+	/* no fields */
 } OutOfMemoryErrorFacet;
 
 typedef struct OutOfMemoryError {
 	const OutOfMemoryErrorVTable *CUSOBJ_CONST vtable;
+	ErrorFacet Error;
 	OutOfMemoryErrorFacet OutOfMemoryError;
 } OutOfMemoryError;
 

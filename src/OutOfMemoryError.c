@@ -16,9 +16,8 @@ static const OutOfMemoryErrorVTable vtable = {
 
 static OutOfMemoryError singleton = {
 	.vtable = &vtable,
-	.OutOfMemoryError = {
-		.Error = {}
-	}
+	.Error = {},
+	.OutOfMemoryError = {}
 };
 
 Error *const singleton_OutOfMemoryError = (Error*)&singleton;
@@ -27,7 +26,13 @@ void OutOfMemoryError_destroyWhole(
 	const Object *error,
 	Error** exception
 ) {
-	OutOfMemoryErrorFacet_destroy(&((OutOfMemoryError*)error)->OutOfMemoryError, exception);
+	OutOfMemoryError *outOfMemory;
+	/* TODO: perform proper downcast */
+	outOfMemory = (OutOfMemoryError*)error;
+	OutOfMemoryErrorFacet_destroy(&outOfMemory->OutOfMemoryError, exception);
+	if(*exception)
+		return;
+	ErrorFacet_destroy(&outOfMemory->Error, exception);
 }
 
 void OutOfMemoryError_printMessage8To(
