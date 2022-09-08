@@ -39,5 +39,6 @@ void cusobj_delete(
 );
 
 #include "Error.h"
+#include "memory.h"
 
 #endif /* CUSOBJECT_OBJECT_H */
